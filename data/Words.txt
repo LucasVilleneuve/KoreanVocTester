@@ -1,0 +1,51 @@
+먹다 | To eat
+마시다 | To drink
+있다 | To have
+앉다 | To sit
+닫다 | To close
+받다 | To receive
+만나다 | To meet
+가다 | To go
+오다 | To come
+자다 | To sleep
+타다 | To get on
+보다 | To watch
+읽다 | To read
+열다 | To open
+찍다 | To take a picture
+입다 | To wear
+벗다 | To take off
+쉬다 | To rest
+주다 | To give
+배우다 | To learn
+가르시다 | To teach
+일하다 | To work
+말하다 | To speak
+공부하다 | To study
+사다 | To buy
+요리하다 | To cook
+청소하다 | To clean
+쇼핑하다 | To do shopping
+운전하다 | To drive
+노래하다 | To sing
+수영하다 | To swim
+빨래하다 | To do laundry
+운동하다 | To exercise
+이야기하다 | To wait
+좋아하다 | To like
+컴퓨터하다 | To use a computer
+씻다 | To wash
+숙제하다 | To do homework
+전화하다 | To call
+산책하다 | To take a walk
+등산하다 | To hike
+살다 | To live
+싫어하다 | To dislike
+여행하다 | To travel
+춤추다 | To dance
+일어나다 | To wake up
+세수하다 | To wash your face
+신다 | To wear shoes
+쓰다 | To wear accessories
+치다 | To play
+화의하다 | To have a meeting
