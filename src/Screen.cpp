@@ -38,7 +38,7 @@ Screen::~Screen()
 
 void Screen::init()
 {
-    font = nk_allegro5_font_create_from_file("./extra_font/Typo_DodamM.ttf", FONT_SIZE, 0); // TODO Change font
+    font = nk_allegro5_font_create_from_file("./fonts/Typo_DodamM.ttf", FONT_SIZE, 0); // TODO Change font
     ctx = nk_allegro5_init(font, window.getDisplay(), window.getWidth(), window.getHeight());
 }
 
