@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include "FileParser.hh"
+#include "Window.hh"
 
 class App
 {
@@ -17,22 +18,39 @@ public:
 
     void start(int nbOfQuestions);
 
+    std::pair<std::string, std::string>    askQuestion();
+    void    loadQuestions();
+    bool    questionsLeft();
+    void    clearQuestions();
+    bool    checkAnswer(std::string answer) const;
+
+    std::string getCurrentQuestion() const;
+    std::string getCurrentAnswer() const;
+    void setInputedAnswer(std::string answer);
+    std::string getInputedAnswer() const;
+
 private:
     /* Consts */
     const std::string DictionaryName = "./data/Words.txt";
     const std::string QuestionDelimiter = "|";
 
     /* Attributes */
-    FileParser fp;
+    FileParser  _fp;
+    Window  _win;
 
-    std::vector<std::string> questions;
+    std::vector<std::string> _questions;
+    std::vector<std::string> _copyQuestions;
+    std::pair<std::string, std::string> _currentQuestion;
+    std::string _inputedAnswer;
 
     /* Functions */
-    void    askQuestion(std::string question, int questionNumber);
+    std::pair<std::string, std::string> askQuestion(std::string question);
+    std::pair<std::string, std::string>    parseQuestion(std::string question);
     void    checkAnswer(std::string answer, std::string input);
     void    getData();
+    void    copyQuestions();
 
-    std::pair<std::string, std::string>    parseQuestion(std::string question);
+
 };
 
 

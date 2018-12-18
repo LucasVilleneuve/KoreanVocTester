@@ -48,4 +48,4 @@
 신다 | To wear shoes
 쓰다 | To wear accessories
 치다 | To play
-화의하다 | To have a meeting
+회의하다 | To have a meeting
