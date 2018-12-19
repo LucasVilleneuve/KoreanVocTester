@@ -33,7 +33,7 @@ public:
 
 private:
 	/* Consts */
-	const std::string DictionaryName = "./data/Words.txt";
+	const std::string DictionaryName = "../data/Words.txt";
 	const std::string QuestionDelimiter = "|";
 
 	/* Attributes */

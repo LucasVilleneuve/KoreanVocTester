@@ -28,22 +28,25 @@ void AnswerScreen::doStuff()
 	  {
 		nk_label(ctx, std::string("The answer was : " + answer).c_str(), NK_TEXT_CENTERED);
 	  }
-	  nk_layout_row_static(ctx, 100, 400, 1);
-	  {
-		if (nk_button_label(ctx, "Next question"))
-		  {
-			if (app.canAskQuestion())
-			  {
-				window.decrementScreenIndex();
-				app.askQuestion();
-			  }
-			else
-			  {
-				window.decrementScreenIndex();
-				window.decrementScreenIndex();
-			  }
-		  }
-	  }
+
+	  nk_layout_row_begin(ctx, NK_DYNAMIC, 100, 2);
+	  nk_layout_row_push(ctx, 0.25);
+	  nk_spacing(ctx, 1);
+	  nk_layout_row_push(ctx, 0.5);
+	  if (nk_button_label(ctx, "Next question"))
+		{
+		  if (app.canAskQuestion())
+			{
+			  window.decrementScreenIndex();
+			  app.askQuestion();
+			}
+		  else
+			{
+			  window.decrementScreenIndex();
+			  window.decrementScreenIndex();
+			}
+		}
+	  nk_layout_row_end(ctx);
 	}
   nk_end(ctx);
 }

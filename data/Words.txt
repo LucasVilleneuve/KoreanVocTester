@@ -49,3 +49,157 @@
 쓰다 | To wear accessories
 치다 | To play
 회의하다 | To have a meeting
+산 | Mountain
+집 | Home
+학교 | School
+교실 | Classroom
+회사 | Company
+은행 | Bank
+병원 | Hospital
+약국 | Pharmacy
+우체국 | Post office
+미용실 | Hairdresser
+백화점 | Department store
+공원 | Park
+커피숍 | Café
+극장 | Movie theater
+영화관 | Movie theater
+식당 | Restaurant
+공항 | Airport
+편의점 | Convenience store
+도서관 | Library
+서점 | Book store
+시장 | Market
+시내 | Downtown
+체육관 | Gymnasium
+방 | Room
+기숙사 | Dormitory
+가구점 | Furniture store
+신발가게 | Shoe store
+옷가게 | Clothes store
+화장실 | Bathroom
+친구 | Friend
+영어 | English
+영화 | Movie
+사진 | Picture
+제 | My
+층 | Floor
+같이 | Together
+위 | On
+아래 | Under
+앞 | In front
+뒤 | Behind
+옆 | Next to
+의사 | Doctor
+간호사 | Nurse
+요리사 | Chief
+경찰 | Policeman
+가수 | Singer
+미용사 | Hairdresser
+학생 | Student
+선생님 | Teacher
+회사원 | Employee
+은행원 | Bank employee
+시계 | Clock
+우산 | Umbrella
+볼펜 | Ball pen
+휴대폰 | Cellphone
+신물 | Newspaper
+치마 | Skirt
+카메라 | Camera
+가방 | Bag
+옷 | Clothing
+옷장 | Wardrobe
+노트북 | Laptop
+책 | Book
+책상 | Desk
+컵 | Cup
+지우개 | Eraser
+연필 | Pencil
+필통 | Pencil case
+의자 | Chair
+베개 | Pillow
+침대 | Bed
+휴대전화 | Cellphone
+이불 | Blanket
+사과 | Apple
+모자 | Hat
+선글라스 | Sunglasses
+티셔츠 | T-shirt
+바지 | Trousers
+청바지 | Jeans
+구두 | Shoes
+부츠 | Boots
+운동화 | Sneakers
+문 | Door
+창문 | Window
+테레비전 | Television
+공 | Ball
+안경 | Glasses
+음식 | Food
+차 | Tea
+라면 | Ramen
+물 | Water
+하고 | And
+과 | And
+와 | And
+이거 | This
+그럼 | Then
+오늘 | Today
+어제 | Yesterday
+언제 | When
+너무 | Very
+그리고 | And
+우리 | Us
+어디 | Where
+지금 | Now
+무슨 | What
+뭐 | What
+몇 | Which
+그래서 | So
+그런데 | But
+캐나다 | Canada
+중국 | China
+영국 | UK
+프랑스 | France
+독일 | Germany
+일분 | Japan
+미국 | USA
+베트남 | Vietnam
+브라질 | Brazil
+호주 | Australia
+핀란드 | Finland
+러시아 | Russia
+태국 | Thailand
+그저께 | Day before yesterday
+내일 | Tomorrow
+모레 | Day after tomorrow
+아침 | Morning
+점심 | Afternoon
+저녁 | Evening
+밤 | Night
+오전 | AM
+오후 | PM
+싸다 | Cheap
+비싸다 | Expensive
+크다 | Big
+작다 | Small
+많다 | Many
+적다 | Little
+맛있다 | Delicious
+맛없다 | Not delicious
+주말 | Weekend
+평일 | Weekdays
+월요일 | Monday
+화요일 | Tuesday
+수요일 | Wednesday
+목요일 | Thursday
+금요일 | Friday
+토요일 | Saturday
+일요일 | Sunday
+새해 | New year
+방학 | Vacation
+선물 | Gift
+년 | Year
+월 | Month
+일 | Day

@@ -3,15 +3,6 @@
 //
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdarg.h>
-#include <string.h>
-#include <math.h>
-#include <assert.h>
-#include <limits.h>
-#include <time.h>
 
 #define NK_INCLUDE_FIXED_TYPES
 #define NK_INCLUDE_STANDARD_IO
@@ -38,7 +29,7 @@ Screen::~Screen()
 
 void Screen::init()
 {
-  font = nk_allegro5_font_create_from_file("./fonts/Typo_DodamM.ttf", FONT_SIZE, 0); // TODO Change font
+  font = nk_allegro5_font_create_from_file(FONT, FONT_SIZE, 0); // TODO Change font
   ctx = nk_allegro5_init(font, window.getDisplay(), window.getWidth(), window.getHeight());
 }
 

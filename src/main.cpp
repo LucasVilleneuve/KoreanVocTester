@@ -10,7 +10,9 @@
  * TODO Improve UI and make it prettier
  * TODO Use database
  * TODO Error handling
- * TODO Btter screen handling (use Id to find a specific screen).
+ * TODO Better screen handling (use Id to find a specific screen).
+ * TODO Improve file and line parsing
+ * TODO Do README
  */
 
 int main(int, char **)

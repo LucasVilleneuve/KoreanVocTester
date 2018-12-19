@@ -30,7 +30,8 @@ protected:
 	NkAllegro5Font      *font = nullptr;
 	struct nk_context   *ctx = nullptr;
 
-	const int           FONT_SIZE = 42;
+	const int			FONT_SIZE = 42;
+	const char			*FONT = "../fonts/Typo_DodamM.ttf";
 };
 
 

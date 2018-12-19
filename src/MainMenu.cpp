@@ -21,30 +21,41 @@ void MainMenu::doStuff()
 		nk_label(ctx, std::string("Korean Vocabulary Tester").c_str(), NK_TEXT_CENTERED);
 	  }
 
-	  nk_layout_row_dynamic(ctx, 100, 3);
-	  {
-		if (nk_button_label(ctx, "Fast (5)"))
-		  {
-			app.reset();
-			app.setNumberOfQuestionsToAsk(5);
-			app.askQuestion();
-			window.incrementScreenIndex();
-		  }
-		if (nk_button_label(ctx, "Normal (10)"))
-		  {
-			app.reset();
-			app.setNumberOfQuestionsToAsk(10);
-			app.askQuestion();
-			window.incrementScreenIndex();
-		  }
-		if (nk_button_label(ctx, "All"))
-		  {
-			app.reset();
-			app.setNumberOfQuestionsToAsk(-1);
-			app.askQuestion();
-			window.incrementScreenIndex();
-		  }
-	  }
+	  nk_layout_row_begin(ctx, NK_DYNAMIC, 100, 6);
+	  nk_layout_row_push(ctx, 0.0625);
+	  nk_spacing(ctx, 1);
+	  nk_layout_row_push(ctx, 0.25);
+	  if (nk_button_label(ctx, "Fast"))
+		{
+		  app.reset();
+		  app.setNumberOfQuestionsToAsk(5);
+		  app.askQuestion();
+		  window.incrementScreenIndex();
+		}
+	  nk_layout_row_push(ctx, 0.0625);
+	  nk_spacing(ctx, 1);
+	  nk_layout_row_push(ctx, 0.25);
+	  if (nk_button_label(ctx, "Normal"))
+		{
+		  app.reset();
+		  app.setNumberOfQuestionsToAsk(10);
+		  app.askQuestion();
+		  window.incrementScreenIndex();
+		}
+	  nk_layout_row_push(ctx, 0.0625);
+	  nk_spacing(ctx, 1);
+	  nk_layout_row_push(ctx, 0.25);
+	  if (nk_button_label(ctx, "All"))
+		{
+		  app.reset();
+		  app.setNumberOfQuestionsToAsk(-1);
+		  app.askQuestion();
+		  window.incrementScreenIndex();
+		}
+	  nk_layout_row_end(ctx);
+
+
+		// TODO Quit button
 	}
   nk_end(ctx);
 }
