@@ -13,45 +13,46 @@
 class App
 {
 public:
-    App();
-    ~App() = default;
+	App();
+	~App() = default;
 
-    void start(int nbOfQuestions);
+	void	start();
+	void    reset();
+	bool	canAskQuestion();
+	void    clearQuestions();
+	bool    checkAnswer(std::string answer) const;
+	std::pair<std::string, std::string>    askQuestion();
 
-    std::pair<std::string, std::string>    askQuestion();
-    void    loadQuestions();
-    bool    questionsLeft();
-    void    clearQuestions();
-    bool    checkAnswer(std::string answer) const;
-
-    std::string getCurrentQuestion() const;
-    std::string getCurrentAnswer() const;
-    void setInputedAnswer(std::string answer);
-    std::string getInputedAnswer() const;
+	/* Getters and setters */
+	std::string	getCurrentQuestion() const;
+	std::string	getCurrentAnswer() const;
+	void	setInputedAnswer(std::string answer);
+	std::string	getInputedAnswer() const;
+	int getNumberOfQuestionsToAsk() const;
+	void setNumberOfQuestionsToAsk(int nb);
 
 private:
-    /* Consts */
-    const std::string DictionaryName = "./data/Words.txt";
-    const std::string QuestionDelimiter = "|";
+	/* Consts */
+	const std::string DictionaryName = "./data/Words.txt";
+	const std::string QuestionDelimiter = "|";
 
-    /* Attributes */
-    FileParser  _fp;
-    Window  _win;
+	/* Attributes */
+	FileParser 	_fp;
+	Window 		_win;
 
-    std::vector<std::string> _questions;
-    std::vector<std::string> _copyQuestions;
-    std::pair<std::string, std::string> _currentQuestion;
-    std::string _inputedAnswer;
+	std::vector<std::string>	_questions;
+	std::vector<std::string>	_copyQuestions;
+	std::pair<std::string, std::string>	_currentQuestion;
+	std::string	_inputedAnswer;
+	int	_numberOfQuestionsToAsk = 0;
+	int _questionAsked = 0;
 
-    /* Functions */
-    std::pair<std::string, std::string> askQuestion(std::string question);
-    std::pair<std::string, std::string>    parseQuestion(std::string question);
-    void    checkAnswer(std::string answer, std::string input);
-    void    getData();
-    void    copyQuestions();
-
-
+	/* Functions */
+	std::pair<std::string, std::string>	askQuestion(std::string question);
+	std::pair<std::string, std::string>    parseQuestion(std::string question);
+	void    getData();
+	void    copyQuestions();
+	bool    questionsLeft();
 };
-
 
 #endif //KOREANVOCTESTER_APP_HH

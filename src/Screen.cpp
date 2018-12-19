@@ -25,41 +25,41 @@
 
 
 Screen::Screen(Window &win)
- : window(win)
+		: window(win)
 {
-    init();
+  init();
 }
 
 Screen::~Screen()
 {
-    nk_allegro5_font_del(font);
-    nk_allegro5_shutdown();
+  nk_allegro5_font_del(font);
+  nk_allegro5_shutdown();
 }
 
 void Screen::init()
 {
-    font = nk_allegro5_font_create_from_file("./fonts/Typo_DodamM.ttf", FONT_SIZE, 0); // TODO Change font
-    ctx = nk_allegro5_init(font, window.getDisplay(), window.getWidth(), window.getHeight());
+  font = nk_allegro5_font_create_from_file("./fonts/Typo_DodamM.ttf", FONT_SIZE, 0); // TODO Change font
+  ctx = nk_allegro5_init(font, window.getDisplay(), window.getWidth(), window.getHeight());
 }
 
 void Screen::render()
 {
-    nk_allegro5_render();
+  nk_allegro5_render();
 }
 
 void Screen::handleEvent(ALLEGRO_EVENT *ev)
 {
-    nk_input_begin(ctx);
-    nk_allegro5_handle_event(ev);
-    if (nk_input_is_key_down(&ctx->input, NK_KEY_ENTER))
-        {
-            std::cout << "Enter is pressed" << std::endl;
-            // TODO Do domething here
-        }
-    nk_input_end(ctx);
+  nk_input_begin(ctx);
+  nk_allegro5_handle_event(ev);
+  if (nk_input_is_key_down(&ctx->input, NK_KEY_ENTER))
+	{
+	  std::cout << "Enter is pressed" << std::endl;
+	  // TODO Do domething here
+	}
+  nk_input_end(ctx);
 }
 
 void Screen::clear()
 {
-    nk_clear(ctx);
+  nk_clear(ctx);
 }

@@ -16,21 +16,21 @@ struct nk_context;
 class Screen
 {
 public:
-    explicit Screen(Window &win);
-    ~Screen();
+	explicit Screen(Window &win);
+	~Screen();
 
-    virtual void    init();
-    virtual void    render();
-    virtual void    handleEvent(ALLEGRO_EVENT *ev);
-    virtual void    doStuff() = 0;
-    void    clear();
+	virtual void    init();
+	virtual void    render();
+	virtual void    handleEvent(ALLEGRO_EVENT *ev);
+	virtual void    doStuff() = 0;
+	void    clear();
 
 protected:
-    Window              &window;
-    NkAllegro5Font      *font = nullptr;
-    struct nk_context   *ctx = nullptr;
+	Window              &window;
+	NkAllegro5Font      *font = nullptr;
+	struct nk_context   *ctx = nullptr;
 
-    const int           FONT_SIZE = 42;
+	const int           FONT_SIZE = 42;
 };
 
 

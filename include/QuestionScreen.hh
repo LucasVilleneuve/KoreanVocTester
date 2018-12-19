@@ -12,19 +12,19 @@ class App;
 class QuestionScreen : public Screen
 {
 public:
-    QuestionScreen(Window &win, App &a);
-    ~QuestionScreen();
+	QuestionScreen(Window &win, App &a);
+	~QuestionScreen();
 
-    void doStuff() override;
+	void doStuff() override;
 
 private:
-    /* Attributes */
-    App                 &app;
-    std::string         currentQuestion;
-    char                input[256] {};
+	/* Attributes */
+	App                 &app;
+	std::string         currentQuestion;
+	char                input[256] {};
 
-    /* Functions */
-    void clearInput();
+	/* Functions */
+	void clearInput();
 };
 
 

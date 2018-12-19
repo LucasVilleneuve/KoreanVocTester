@@ -4,13 +4,19 @@
 
 #include <App.hh>
 
-// TODO Add colors
+/*
+ * TODO Add score screen
+ * TODO Add Colors to AnswerScreen
+ * TODO Improve UI and make it prettier
+ * TODO Use database
+ * TODO Error handling
+ * TODO Btter screen handling (use Id to find a specific screen).
+ */
 
 int main(int, char **)
 {
-    App app;
+  App app;
 
-    app.start(15);
-
-    return 0;
+  app.start();
+  return 0;
 }
