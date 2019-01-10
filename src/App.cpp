@@ -5,8 +5,8 @@
 #include <iostream>
 #include <utility>
 #include <ctime>
-#include <App.hh>
-#include <StringOps.hpp>
+#include "App.hh"
+#include "StringOps.hpp"
 #include "MainMenu.hh"
 #include "QuestionScreen.hh"
 #include "AnswerScreen.hh"
@@ -136,7 +136,11 @@ std::string App::getCurrentAnswer() const
 
 bool App::checkAnswer(std::string answer) const
 {
-  return answer == _currentQuestion.second;
+  std::string modifiedAnswer = toLower(removeSpaces(answer));
+  std::string copyCorrectAnswer = _currentQuestion.second;
+  toLower(removeSpaces(copyCorrectAnswer));
+
+  return areStringsRoughlyEquivalent(modifiedAnswer, copyCorrectAnswer, 1);
 }
 
 void App::setInputedAnswer(std::string answer)
@@ -164,4 +168,50 @@ bool App::canAskQuestion()
   if (!questionsLeft()) return false;
   if (_numberOfQuestionsToAsk == -1) return true; // If == -1, then ask all the questions
   return (_questionAsked < _numberOfQuestionsToAsk);
+}
+
+bool App::areStringsRoughlyEquivalent(std::string in, std::string an, unsigned int nbErrorsMax)
+{
+  unsigned int lenStr1 = in.length();
+  unsigned int lenStr2 = an.length();
+  unsigned int nbErrors = 0;
+
+  if (lenStr1 == lenStr2) // Same size
+	{
+	  for (unsigned int i = 0; i < lenStr1; ++i)
+		{
+		  if (in[i] != an[i])
+			++nbErrors;
+		}
+	}
+  else if (lenStr1 > lenStr2) // Input bigger
+	{
+	  nbErrors = countNbErrors(in, an);
+	}
+  else // Input smaller
+	{
+	  nbErrors = countNbErrors(an, in);
+	}
+  return nbErrors <= nbErrorsMax;
+}
+
+unsigned int App::countNbErrors(std::string str1, std::string str2)
+{
+  unsigned int i = 0;
+  unsigned int j = 0;
+  unsigned int nbErrors = 0;
+
+  while (i < str1.length())
+	{
+	  if (j < str2.length() && str1[i] == str2[j])
+		{
+		  ++j;
+		}
+	  else
+		{
+		  ++nbErrors;
+		}
+	  ++i;
+	}
+  return nbErrors;
 }

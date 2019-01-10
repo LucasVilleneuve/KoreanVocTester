@@ -25,7 +25,7 @@ void MainMenu::doStuff()
 	  nk_layout_row_push(ctx, 0.0625);
 	  nk_spacing(ctx, 1);
 	  nk_layout_row_push(ctx, 0.25);
-	  if (nk_button_label(ctx, "Fast"))
+	  if (nk_button_label(ctx, "5"))
 		{
 		  app.reset();
 		  app.setNumberOfQuestionsToAsk(5);
@@ -35,7 +35,7 @@ void MainMenu::doStuff()
 	  nk_layout_row_push(ctx, 0.0625);
 	  nk_spacing(ctx, 1);
 	  nk_layout_row_push(ctx, 0.25);
-	  if (nk_button_label(ctx, "Normal"))
+	  if (nk_button_label(ctx, "10"))
 		{
 		  app.reset();
 		  app.setNumberOfQuestionsToAsk(10);

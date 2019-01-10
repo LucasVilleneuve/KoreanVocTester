@@ -53,6 +53,8 @@ private:
 	void    getData();
 	void    copyQuestions();
 	bool    questionsLeft();
+	static bool	areStringsRoughlyEquivalent(std::string str1, std::string str2, unsigned int nbErrorsMax);
+	static unsigned int countNbErrors(std::string str1, std::string str2);
 };
 
 #endif //KOREANVOCTESTER_APP_HH
