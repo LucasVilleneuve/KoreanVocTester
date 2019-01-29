@@ -5,6 +5,7 @@ project(KoreanVocTester)
 set(SOURCE_DIR src)
 set(INCLUDE_DIR include)
 set(SOURCE_FILES
+        sqlite/sqlite3.c
         ${SOURCE_DIR}/main.cpp
         ${SOURCE_DIR}/App.cpp
         ${SOURCE_DIR}/FileParser.cpp
@@ -13,12 +14,15 @@ set(SOURCE_FILES
         ${SOURCE_DIR}/Screen.cpp
         ${SOURCE_DIR}/QuestionScreen.cpp
         ${SOURCE_DIR}/AnswerScreen.cpp
-        ${SOURCE_DIR}/MainMenu.cpp)
+        ${SOURCE_DIR}/MainMenu.cpp
+        ${SOURCE_DIR}/DatabaseHandler.cpp
+        )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 include_directories(include)
 include_directories(nuklear)
+include_directories(sqlite)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
