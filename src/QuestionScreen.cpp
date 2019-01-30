@@ -18,7 +18,7 @@ QuestionScreen::~QuestionScreen() = default;
 
 void QuestionScreen::doStuff()
 {
-  currentQuestion.assign(app.getCurrentQuestion());
+  currentQuestion.assign(app.getCurrentWord());
   if (nk_begin(ctx, "Question Screen", nk_rect(0, 0, window.getWidth() , window.getHeight()), 0))
 	{
 	  nk_layout_row_dynamic(ctx, 300, 1);

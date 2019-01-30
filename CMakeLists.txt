@@ -8,7 +8,6 @@ set(SOURCE_FILES
         sqlite/sqlite3.c
         ${SOURCE_DIR}/main.cpp
         ${SOURCE_DIR}/App.cpp
-        ${SOURCE_DIR}/FileParser.cpp
         ${INCLUDE_DIR}/StringOps.hpp
         ${SOURCE_DIR}/Window.cpp
         ${SOURCE_DIR}/Screen.cpp
@@ -16,7 +15,7 @@ set(SOURCE_FILES
         ${SOURCE_DIR}/AnswerScreen.cpp
         ${SOURCE_DIR}/MainMenu.cpp
         ${SOURCE_DIR}/DatabaseHandler.cpp
-        )
+        include/Word.hpp)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
