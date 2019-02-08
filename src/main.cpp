@@ -13,7 +13,7 @@
  *  - Better screen handling (use Id to find a specific screen).
  *  - Do README
  *  - Implement Imgui instead of Nuklear
- *  - Fill databse
+ *  - Fill database (type col)
  */
 
 int main(int, char **)

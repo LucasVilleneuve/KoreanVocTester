@@ -105,7 +105,7 @@ Word App::askQuestion()
 	  // TODO Throw error or something ?
 	}
 
-	std::cout << "Current question is : " << w.word << std::endl;
+  std::cout << "Current question is : " << w.word << std::endl;
   _currentQuestion = w;
   return w;
 }
