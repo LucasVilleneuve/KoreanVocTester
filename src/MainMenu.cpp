@@ -5,8 +5,8 @@
 #include "App.hh"
 #include "MainMenu.hh"
 
-MainMenu::MainMenu(Window &win, App &a)
-		: Screen(win), app(a)
+MainMenu::MainMenu(Window &win, const std::string &screenName, App &a)
+		: Screen(win, screenName), app(a)
 {
 }
 
@@ -14,7 +14,7 @@ MainMenu::~MainMenu() = default;
 
 void MainMenu::doStuff()
 {
-  if (nk_begin(ctx, "MainMenu Screen", nk_rect(0, 0, window.getWidth() , window.getHeight()), 0))
+  if (nk_begin(ctx, "MainMenu Screen", nk_rect(0, 0, _window.getWidth() , _window.getHeight()), 0))
 	{
 	  nk_layout_row_dynamic(ctx, 300, 1);
 	  {
@@ -30,7 +30,7 @@ void MainMenu::doStuff()
 		  app.reset();
 		  app.setNumberOfQuestionsToAsk(5);
 		  app.askQuestion();
-		  window.incrementScreenIndex();
+		  _window.changeScreen("Question");
 		}
 	  nk_layout_row_push(ctx, 0.0625);
 	  nk_spacing(ctx, 1);
@@ -40,7 +40,8 @@ void MainMenu::doStuff()
 		  app.reset();
 		  app.setNumberOfQuestionsToAsk(10);
 		  app.askQuestion();
-		  window.incrementScreenIndex();
+		  _window.changeScreen("Question");
+
 		}
 	  nk_layout_row_push(ctx, 0.0625);
 	  nk_spacing(ctx, 1);
@@ -50,7 +51,7 @@ void MainMenu::doStuff()
 		  app.reset();
 		  app.setNumberOfQuestionsToAsk(-1);
 		  app.askQuestion();
-		  window.incrementScreenIndex();
+		  _window.changeScreen("Question");
 		}
 	  nk_layout_row_end(ctx);
 

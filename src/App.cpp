@@ -12,13 +12,14 @@
 #include "AnswerScreen.hh"
 
 App::App()
-		: _fp(DictionaryName), _win(800, 600)
+		: _db(DatabaseName), _win(800, 600)
 {
   std::srand(std::time(nullptr));
   this->getData();
-  _win.addScreen(new MainMenu(_win, *this));
-  _win.addScreen(new QuestionScreen(_win, *this));
-  _win.addScreen(new AnswerScreen(_win, *this));
+  this->copyQuestions();
+  _win.addScreen(new MainMenu(_win, "MainMenu", *this));
+  _win.addScreen(new QuestionScreen(_win, "Question", *this));
+  _win.addScreen(new AnswerScreen(_win, "Answer", *this));
 }
 
 void App::start()
@@ -33,49 +34,35 @@ void App::start()
 	  _win.clear();
 	  _win.draw();
 	}
-
-}
-
-std::pair<std::string, std::string> App::askQuestion(std::string question)
-{
-  // Get word and answer
-  auto pair = parseQuestion(std::move(question));
-  if (pair.first.empty()) // Error
-	{
-	  return std::make_pair("", "");
-	}
-
-  std::cout << "Translate \'" << pair.first << "\'." << std::endl;
-
-  return pair;
-}
-
-// TODO Maybe parse at beginning and only store correct questions
-std::pair<std::string, std::string>  App::parseQuestion(std::string question)
-{
-  std::pair<std::string, std::string> pair;
-
-  question = trim(question);
-
-  size_t pos = 0;
-  if ((pos = question.find(QuestionDelimiter)) != std::string::npos)
-	{
-	  std::string word = question.substr(0, pos);
-	  question.erase(0, pos + QuestionDelimiter.length());
-	  return std::make_pair(trim(word), trim(question));
-	}
-  std::cerr << "Error, Question format is incorrect : cannot find delimiter." << std::endl;
-  return std::make_pair("", "");
 }
 
 void App::getData()
 {
-  std::string question = _fp.getLine();
-  while (!question.empty())
+  auto result = _db.execute("SELECT * FROM Words");
+
+  for (const auto &queryContent : result)
 	{
-	  _questions.push_back(question);
-	  _copyQuestions.push_back(question);
-	  question = _fp.getLine();
+	  std::string word;
+	  std::string translation;
+	  int type = 0;
+
+	  for (int i = 0; i < queryContent.nbCol; ++i)
+		{
+		  if (queryContent.colNames[i] == "word")
+			{
+			  word = queryContent.content[i];
+			}
+		  else if (queryContent.colNames[i] == "translation")
+			{
+			  translation = queryContent.content[i];
+			}
+		  else if (queryContent.colNames[i] == "type")
+			{
+			  type = std::stoi(queryContent.content[i]);
+			}
+		}
+
+	  _questions.emplace_back(word, translation, static_cast<WordType>(type));
 	}
 }
 
@@ -101,43 +88,42 @@ void App::clearQuestions()
   _copyQuestions.clear();
 }
 
-std::pair<std::string, std::string> App::askQuestion()
+Word App::askQuestion()
 {
-  std::pair<std::string, std::string> pair;
+  Word w ("", "", WordType::UNKNOWN);
 
-  if (!canAskQuestion())
+  if (canAskQuestion())
 	{
-	  std::cout << "No more questions to ask." << std::endl;
-	  // TODO Throw error or something ?
-	  pair = std::make_pair("", "");
-	  _currentQuestion = pair;
+	  ++_questionAsked;
+	  auto nb = static_cast<int>(std::rand() % _copyQuestions.size());
+	  w = _copyQuestions[nb];
+	  _copyQuestions.erase(_copyQuestions.begin() + nb);
 	}
   else
 	{
-	  ++_questionAsked;
-	  int nb = static_cast<int>(std::rand() % _copyQuestions.size());
-	  pair = askQuestion(_copyQuestions[nb]);
-	  _copyQuestions.erase(_copyQuestions.begin() + nb);
+	  std::cout << "No more questions to ask." << std::endl;
+	  // TODO Throw error or something ?
 	}
 
-  _currentQuestion = pair;
-  return pair; // first is question, second is answer
+  std::cout << "Current question is : " << w.word << std::endl;
+  _currentQuestion = w;
+  return w;
 }
 
-std::string App::getCurrentQuestion() const
+Word App::getCurrentQuestion() const
 {
-  return _currentQuestion.first;
+  return _currentQuestion;
 }
 
 std::string App::getCurrentAnswer() const
 {
-  return _currentQuestion.second;
+  return _currentQuestion.translation;
 }
 
 bool App::checkAnswer(std::string answer) const
 {
   std::string modifiedAnswer = toLower(removeSpaces(answer));
-  std::string copyCorrectAnswer = _currentQuestion.second;
+  std::string copyCorrectAnswer = _currentQuestion.translation;
   toLower(removeSpaces(copyCorrectAnswer));
 
   return areStringsRoughlyEquivalent(modifiedAnswer, copyCorrectAnswer, 1);
@@ -214,4 +200,9 @@ unsigned int App::countNbErrors(std::string str1, std::string str2)
 	  ++i;
 	}
   return nbErrors;
+}
+
+std::string App::getCurrentWord() const
+{
+  return _currentQuestion.word;
 }

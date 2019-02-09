@@ -5,14 +5,15 @@
 #include <App.hh>
 
 /*
- * TODO Add score screen
- * TODO Add Colors to AnswerScreen
- * TODO Improve UI and make it prettier
- * TODO Use database
- * TODO Error handling
- * TODO Better screen handling (use Id to find a specific screen).
- * TODO Improve file and line parsing
- * TODO Do README
+ * TODO
+ * 	- Score screen
+ *  - Add Colors to AnswerScreen
+ *  - Improve UI and make it prettier
+ *  - Error handling
+ *  - Do README
+ *  - Implement Imgui instead of Nuklear
+ *  - Fill database (type col)
+ *  - Write Question number on screen
  */
 
 int main(int, char **)

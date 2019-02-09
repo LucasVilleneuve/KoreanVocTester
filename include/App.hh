@@ -7,8 +7,9 @@
 
 #include <string>
 #include <vector>
-#include "FileParser.hh"
 #include "Window.hh"
+#include "DatabaseHandler.hh"
+#include "Word.hpp"
 
 class App
 {
@@ -21,35 +22,33 @@ public:
 	bool	canAskQuestion();
 	void    clearQuestions();
 	bool    checkAnswer(std::string answer) const;
-	std::pair<std::string, std::string>    askQuestion();
+	Word    askQuestion();
 
 	/* Getters and setters */
-	std::string	getCurrentQuestion() const;
+	Word		getCurrentQuestion() const;
+	std::string getCurrentWord() const;
 	std::string	getCurrentAnswer() const;
-	void	setInputedAnswer(std::string answer);
 	std::string	getInputedAnswer() const;
-	int getNumberOfQuestionsToAsk() const;
-	void setNumberOfQuestionsToAsk(int nb);
+	void		setInputedAnswer(std::string answer);
+	int 		getNumberOfQuestionsToAsk() const;
+	void 		setNumberOfQuestionsToAsk(int nb);
 
 private:
 	/* Consts */
-	const std::string DictionaryName = "../data/Words.txt";
-	const std::string QuestionDelimiter = "|";
+	const std::string DatabaseName = "../data/Words.sqlite";
 
 	/* Attributes */
-	FileParser 	_fp;
-	Window 		_win;
+	DatabaseHandler _db;
+	Window 			_win;
 
-	std::vector<std::string>	_questions;
-	std::vector<std::string>	_copyQuestions;
-	std::pair<std::string, std::string>	_currentQuestion;
-	std::string	_inputedAnswer;
-	int	_numberOfQuestionsToAsk = 0;
-	int _questionAsked = 0;
+	std::vector<Word>	_questions;
+	std::vector<Word>	_copyQuestions;
+	Word				_currentQuestion;
+	std::string			_inputedAnswer;
+	int					_numberOfQuestionsToAsk = 0;
+	int					_questionAsked = 0;
 
 	/* Functions */
-	std::pair<std::string, std::string>	askQuestion(std::string question);
-	std::pair<std::string, std::string>    parseQuestion(std::string question);
 	void    getData();
 	void    copyQuestions();
 	bool    questionsLeft();
