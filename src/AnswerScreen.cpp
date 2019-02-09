@@ -6,8 +6,8 @@
 #include <App.hh>
 #include "AnswerScreen.hh"
 
-AnswerScreen::AnswerScreen(Window &win, App &a)
-		: Screen(win), app(a)
+AnswerScreen::AnswerScreen(Window &win, const std::string &screenName, App &a)
+		: Screen(win, screenName), app(a)
 {
 }
 
@@ -17,7 +17,7 @@ void AnswerScreen::doStuff()
 {
   answer = app.getCurrentAnswer();
 
-  if (nk_begin(ctx, "Answer screen", nk_rect(0, 0, window.getWidth() , window.getHeight()), 0))
+  if (nk_begin(ctx, "Answer screen", nk_rect(0, 0, _window.getWidth() , _window.getHeight()), 0))
 	{
 	  nk_layout_row_dynamic(ctx, 150, 1);
 	  {
@@ -37,13 +37,12 @@ void AnswerScreen::doStuff()
 		{
 		  if (app.canAskQuestion())
 			{
-			  window.decrementScreenIndex();
+			  _window.changeScreen("Question");
 			  app.askQuestion();
 			}
 		  else
 			{
-			  window.decrementScreenIndex();
-			  window.decrementScreenIndex();
+			  _window.changeScreen("MainMenu");
 			}
 		}
 	  nk_layout_row_end(ctx);

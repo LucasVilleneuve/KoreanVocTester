@@ -70,7 +70,7 @@ unsigned int Window::getHeight() const
 
 void Window::draw()
 {
-  screens[currentScreenIndex]->render();
+  (*currentIndex)->render();
 
   if (redraw)
 	{
@@ -93,7 +93,7 @@ ALLEGRO_EVENT Window::getEvent()
 	  redraw = true;
 	}
 
-  screens[currentScreenIndex]->handleEvent(&event);
+  (*currentIndex)->handleEvent(&event);
 
   return event;
 }
@@ -115,20 +115,30 @@ ALLEGRO_DISPLAY *Window::getDisplay() const
 
 void Window::doStuff()
 {
-  screens[currentScreenIndex]->doStuff();
+  (*currentIndex)->doStuff();
 }
 
 void Window::addScreen(Screen *scr)
 {
+  bool needToInit = screens.empty();
+
   screens.push_back(std::unique_ptr<Screen>(scr));
+
+  if (needToInit)
+	  currentScreen = scr->getName();
+  changeScreen(currentScreen);
 }
 
-void Window::incrementScreenIndex()
+void Window::changeScreen(const std::string &name)
 {
-  ++currentScreenIndex;
-}
-
-void Window::decrementScreenIndex()
-{
-  --currentScreenIndex;
+  for (auto it = screens.begin(); it != screens.end(); ++it)
+	{
+	  if ((*it)->getName() == name)
+		{
+		  currentIndex = it;
+		  currentScreen = name;
+		  return;
+		}
+	}
+  std::cerr << "Cannot find screen named \"" << name << "\"." << std::endl;
 }

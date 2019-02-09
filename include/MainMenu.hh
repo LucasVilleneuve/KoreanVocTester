@@ -12,7 +12,7 @@ class App;
 class MainMenu : public Screen
 {
 public:
-    MainMenu(Window &win, App &a);
+    MainMenu(Window &win, const std::string &screenName, App &a);
     ~MainMenu();
 
     void doStuff() override;

@@ -30,10 +30,7 @@ public:
 	void    startTimer();
 	void    doStuff();
 	void    addScreen(Screen *scr);
-
-	// Screen index
-	void    incrementScreenIndex();
-	void    decrementScreenIndex();
+	void	changeScreen(const std::string &name);
 
 private:
 	void init();
@@ -51,7 +48,8 @@ private:
 	bool redraw = true;
 
 	std::vector<std::unique_ptr<Screen>> screens;
-	unsigned int currentScreenIndex = 0;
+	std::vector<std::unique_ptr<Screen>>::iterator currentIndex = screens.end();
+	std::string	currentScreen;
 };
 
 

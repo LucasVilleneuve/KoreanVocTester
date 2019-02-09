@@ -9,8 +9,8 @@
 #include "QuestionScreen.hh"
 #include "App.hh"
 
-QuestionScreen::QuestionScreen(Window &win, App &a)
-		: Screen(win), app(a)
+QuestionScreen::QuestionScreen(Window &win, const std::string &screenName, App &a)
+		: Screen(win, screenName), app(a)
 {
 }
 
@@ -19,7 +19,7 @@ QuestionScreen::~QuestionScreen() = default;
 void QuestionScreen::doStuff()
 {
   currentQuestion.assign(app.getCurrentWord());
-  if (nk_begin(ctx, "Question Screen", nk_rect(0, 0, window.getWidth() , window.getHeight()), 0))
+  if (nk_begin(ctx, "Question Screen", nk_rect(0, 0, _window.getWidth() , _window.getHeight()), 0))
 	{
 	  nk_layout_row_dynamic(ctx, 300, 1);
 	  {
@@ -33,7 +33,7 @@ void QuestionScreen::doStuff()
 		  {
 			app.setInputedAnswer(input);
 			clearInput();
-			window.incrementScreenIndex();
+			_window.changeScreen("Answer");
 		  }
 	  }
 	}

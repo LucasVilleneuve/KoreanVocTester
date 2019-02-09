@@ -17,9 +17,9 @@ App::App()
   std::srand(std::time(nullptr));
   this->getData();
   this->copyQuestions();
-  _win.addScreen(new MainMenu(_win, *this));
-  _win.addScreen(new QuestionScreen(_win, *this));
-  _win.addScreen(new AnswerScreen(_win, *this));
+  _win.addScreen(new MainMenu(_win, "MainMenu", *this));
+  _win.addScreen(new QuestionScreen(_win, "Question", *this));
+  _win.addScreen(new AnswerScreen(_win, "Answer", *this));
 }
 
 void App::start()

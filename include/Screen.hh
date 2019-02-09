@@ -16,22 +16,26 @@ struct nk_context;
 class Screen
 {
 public:
-	explicit Screen(Window &win);
+	explicit Screen(Window &win, const std::string &screenName);
 	~Screen();
 
 	virtual void    init();
 	virtual void    render();
 	virtual void    handleEvent(ALLEGRO_EVENT *ev);
 	virtual void    doStuff() = 0;
-	void    clear();
+	void    		clear();
+	std::string		getName() const;
 
 protected:
-	Window              &window;
+	Window              &_window;
 	NkAllegro5Font      *font = nullptr;
 	struct nk_context   *ctx = nullptr;
 
 	const int			FONT_SIZE = 42;
 	const char			*FONT = "../fonts/Typo_DodamM.ttf";
+
+private:
+	std::string	_name;
 };
 
 

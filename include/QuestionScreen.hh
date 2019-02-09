@@ -12,7 +12,7 @@ class App;
 class QuestionScreen : public Screen
 {
 public:
-	QuestionScreen(Window &win, App &a);
+	QuestionScreen(Window &win, const std::string &screenName, App &a);
 	~QuestionScreen();
 
 	void doStuff() override;
